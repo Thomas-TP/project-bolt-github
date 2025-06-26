@@ -1,0 +1,29 @@
+{
+  "name": "HelpDesk Tickets Widget",
+  "short_name": "Tickets",
+  "description": "Widget pour afficher les tickets récents de support",
+  "src": "/widgets/tickets.html",
+  "sizes": "256x256 512x256",
+  "tag": "tickets",
+  "update": 3600,
+  "type": "application/json",
+  "template": "tickets-template",
+  "data": "/api/widgets/tickets",
+  "auth": false,
+  "installable": true,
+  "ms_ac_template": "adaptive",
+  "backgrounds": [
+    {
+      "size": "256x256",
+      "src": "/screenshots/widget-tickets-256.png"
+    },
+    {
+      "size": "512x256",
+      "src": "/screenshots/widget-tickets-512.png"
+    }
+  ],
+  "periodicSync": {
+    "minInterval": 900000,
+    "tag": "widget-tickets-sync"
+  }
+}

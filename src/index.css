@@ -1,0 +1,604 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Layout et scroll global optimisé */
+html, body {
+  height: 100%;
+  overflow: hidden; /* Empêche tout scroll global */
+}
+
+#root {
+  height: 100%;
+  overflow: hidden; /* Empêche le scroll sur le site principal */
+}
+
+/* Amélioration du scroll pour la zone principale */
+.main-scroll-area {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e0 #f7fafc;
+}
+
+.main-scroll-area::-webkit-scrollbar {
+  width: 6px;
+}
+
+.main-scroll-area::-webkit-scrollbar-track {
+  background: #f7fafc;
+}
+
+.main-scroll-area::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 3px;
+}
+
+.main-scroll-area::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
+}
+
+/* Variables CSS personnalisées pour le thème dynamique */
+:root {
+  --color-primary: #ef4444;
+  --color-secondary: #f59e0b;
+}
+
+/* Classes utilitaires pour utiliser les couleurs dynamiques */
+.text-primary {
+  color: var(--color-primary);
+}
+
+.bg-primary {
+  background-color: var(--color-primary);
+}
+
+.border-primary {
+  border-color: var(--color-primary);
+}
+
+.text-secondary {
+  color: var(--color-secondary);
+}
+
+.bg-secondary {
+  background-color: var(--color-secondary);
+}
+
+.border-secondary {
+  border-color: var(--color-secondary);
+}
+
+.bg-gradient-primary {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+}
+
+/* Styles pour les boutons avec couleurs dynamiques */
+.btn-primary {
+  background-color: var(--color-primary);
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  filter: brightness(0.9);
+  transform: translateY(-1px);
+}
+
+.btn-gradient {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.btn-gradient:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Animations et transitions améliorées */
+.transition-all-smooth {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Styles pour les cartes avec effet de survol */
+.card-hover {
+  transition: all 0.2s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles pour les éléments de navigation avec couleurs dynamiques */
+.nav-item-active {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  background-size: 100% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Styles pour les indicateurs de statut */
+.status-indicator {
+  position: relative;
+}
+
+.status-indicator::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--color-primary);
+  border-radius: inherit;
+  opacity: 0.1;
+  transition: opacity 0.2s ease;
+}
+
+.status-indicator:hover::before {
+  opacity: 0.2;
+}
+
+/* Styles pour les formulaires avec thème dynamique */
+.form-input-primary:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+/* Styles pour les notifications avec couleurs dynamiques */
+.notification-primary {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Styles pour les badges et étiquettes */
+.badge-primary {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--color-secondary);
+  color: white;
+}
+
+/* Styles pour les barres de progression */
+.progress-bar-primary {
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+}
+
+/* Styles pour les liens avec couleurs dynamiques */
+.link-primary {
+  color: var(--color-primary);
+  transition: color 0.2s ease;
+}
+
+.link-primary:hover {
+  color: var(--color-secondary);
+}
+
+/* Styles pour les icônes avec couleurs dynamiques */
+.icon-primary {
+  color: var(--color-primary);
+}
+
+.icon-secondary {
+  color: var(--color-secondary);
+}
+
+/* Styles pour les bordures avec couleurs dynamiques */
+.border-gradient-primary {
+  border: 2px solid;
+  border-image: linear-gradient(135deg, var(--color-primary), var(--color-secondary)) 1;
+}
+
+/* Styles pour les ombres avec couleurs dynamiques */
+.shadow-primary {
+  box-shadow: 0 4px 14px 0 rgba(239, 68, 68, 0.15);
+}
+
+.shadow-secondary {
+  box-shadow: 0 4px 14px 0 rgba(245, 158, 11, 0.15);
+}
+
+/* Styles pour les effets de focus avec couleurs dynamiques */
+.focus-primary:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+}
+
+/* Styles pour les tableaux avec thème dynamique */
+.table-header-primary {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  background-size: 200% 200%;
+  color: white;
+}
+
+/* Styles pour les modales avec thème dynamique */
+.modal-header-primary {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  background-size: 200% 200%;
+}
+
+/* Styles pour les tooltips avec couleurs dynamiques */
+.tooltip-primary {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+/* Styles pour les spinners/loaders avec couleurs dynamiques */
+.spinner-primary {
+  border-color: var(--color-primary);
+  border-top-color: transparent;
+}
+
+/* Styles pour les graphiques et visualisations */
+.chart-primary {
+  color: var(--color-primary);
+}
+
+.chart-secondary {
+  color: var(--color-secondary);
+}
+
+/* Styles pour les éléments interactifs */
+.interactive-primary {
+  transition: all 0.2s ease;
+}
+
+.interactive-primary:hover {
+  background-color: var(--color-primary);
+  color: white;
+  transform: scale(1.02);
+}
+
+/* Styles pour les séparateurs avec couleurs dynamiques */
+.divider-primary {
+  background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+  height: 1px;
+}
+
+/* Styles pour les codes et éléments monospace */
+.code-primary {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: var(--color-primary);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+/* Styles pour les éléments de navigation breadcrumb */
+.breadcrumb-primary .breadcrumb-item:not(:last-child)::after {
+  color: var(--color-primary);
+}
+
+/* Styles pour les éléments de pagination */
+.pagination-primary .page-link {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.pagination-primary .page-link:hover {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+/* Styles pour les alertes avec couleurs dynamiques */
+.alert-primary {
+  background-color: rgba(239, 68, 68, 0.1);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* Styles pour les éléments de dropdown */
+.dropdown-primary .dropdown-item:hover {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+/* Styles pour les éléments de tabs */
+.tab-primary.active {
+  border-bottom-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* Styles pour les éléments de slider/range */
+.slider-primary::-webkit-slider-thumb {
+  background-color: var(--color-primary);
+}
+
+.slider-primary::-moz-range-thumb {
+  background-color: var(--color-primary);
+}
+
+/* Styles pour les éléments de switch/toggle */
+.switch-primary:checked {
+  background-color: var(--color-primary);
+}
+
+/* Styles pour les éléments de radio et checkbox personnalisés */
+.radio-primary:checked {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.checkbox-primary:checked {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+/* Styles pour les éléments de calendrier */
+.calendar-primary .selected {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+/* Styles pour les éléments de timeline */
+.timeline-primary .timeline-item::before {
+  background-color: var(--color-primary);
+}
+
+/* Styles pour les éléments de stepper */
+.stepper-primary .step.active {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+/* Styles pour les éléments de rating/étoiles */
+.rating-primary .star.active {
+  color: var(--color-primary);
+}
+
+/* Styles pour les éléments de tag/chip */
+.tag-primary {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+/* Styles pour les éléments de skeleton loading */
+.skeleton-primary {
+  background: linear-gradient(90deg, transparent, rgba(239, 68, 68, 0.1), transparent);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+@keyframes skeleton-loading {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Styles pour les éléments de scroll personnalisé */
+.scrollbar-primary::-webkit-scrollbar-thumb {
+  background-color: var(--color-primary);
+}
+
+/* Styles pour les éléments de resizer */
+.resizer-primary {
+  background-color: var(--color-primary);
+}
+
+/* Styles pour les éléments de drag and drop */
+.draggable-primary.dragging {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
+}
+
+/* Styles pour les éléments de selection */
+.selectable-primary.selected {
+  background-color: rgba(239, 68, 68, 0.1);
+  border-color: var(--color-primary);
+}
+
+/* Styles pour les éléments de highlight */
+.highlight-primary {
+  background-color: rgba(239, 68, 68, 0.2);
+  color: var(--color-primary);
+}
+
+/* Styles pour les éléments de watermark */
+.watermark-primary {
+  color: rgba(239, 68, 68, 0.1);
+}
+
+/* Styles pour les éléments de overlay */
+.overlay-primary {
+  background-color: rgba(239, 68, 68, 0.8);
+}
+
+/* Styles pour les éléments de mask */
+.mask-primary {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  -webkit-mask-image: linear-gradient(black, transparent);
+  mask-image: linear-gradient(black, transparent);
+}
+
+/* Styles pour les éléments de glow */
+.glow-primary {
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
+}
+
+/* Styles pour les éléments de pulse */
+.pulse-primary {
+  animation: pulse-primary 2s infinite;
+}
+
+@keyframes pulse-primary {
+  0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+/* Styles pour les éléments de shake */
+.shake-primary {
+  animation: shake-primary 0.5s;
+}
+
+@keyframes shake-primary {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-2px); }
+  20%, 40%, 60%, 80% { transform: translateX(2px); }
+}
+
+/* Styles pour les éléments de bounce */
+.bounce-primary {
+  animation: bounce-primary 1s infinite;
+}
+
+@keyframes bounce-primary {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
+}
+
+/* Styles pour les éléments de fade */
+.fade-primary {
+  animation: fade-primary 0.5s ease-in-out;
+}
+
+@keyframes fade-primary {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Styles pour les éléments de slide */
+.slide-primary {
+  animation: slide-primary 0.5s ease-in-out;
+}
+
+@keyframes slide-primary {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+/* Styles pour les éléments de zoom */
+.zoom-primary {
+  animation: zoom-primary 0.3s ease-in-out;
+}
+
+@keyframes zoom-primary {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Styles pour les éléments de flip */
+.flip-primary {
+  animation: flip-primary 0.6s ease-in-out;
+}
+
+@keyframes flip-primary {
+  from { transform: rotateY(-90deg); }
+  to { transform: rotateY(0); }
+}
+
+/* Styles pour les éléments de rotate */
+.rotate-primary {
+  animation: rotate-primary 2s linear infinite;
+}
+
+@keyframes rotate-primary {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Styles pour les éléments de swing */
+.swing-primary {
+  animation: swing-primary 1s ease-in-out;
+}
+
+@keyframes swing-primary {
+  20% { transform: rotate(15deg); }
+  40% { transform: rotate(-10deg); }
+  60% { transform: rotate(5deg); }
+  80% { transform: rotate(-5deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* Styles pour les éléments de wobble */
+.wobble-primary {
+  animation: wobble-primary 1s ease-in-out;
+}
+
+@keyframes wobble-primary {
+  0% { transform: translateX(0%); }
+  15% { transform: translateX(-25%) rotate(-5deg); }
+  30% { transform: translateX(20%) rotate(3deg); }
+  45% { transform: translateX(-15%) rotate(-3deg); }
+  60% { transform: translateX(10%) rotate(2deg); }
+  75% { transform: translateX(-5%) rotate(-1deg); }
+  100% { transform: translateX(0%); }
+}
+
+/* Styles pour les éléments de jello */
+.jello-primary {
+  animation: jello-primary 1s ease-in-out;
+}
+
+@keyframes jello-primary {
+  11.1% { transform: skewX(-12.5deg) skewY(-12.5deg); }
+  22.2% { transform: skewX(6.25deg) skewY(6.25deg); }
+  33.3% { transform: skewX(-3.125deg) skewY(-3.125deg); }
+  44.4% { transform: skewX(1.5625deg) skewY(1.5625deg); }
+  55.5% { transform: skewX(-0.78125deg) skewY(-0.78125deg); }
+  66.6% { transform: skewX(0.390625deg) skewY(0.390625deg); }
+  77.7% { transform: skewX(-0.1953125deg) skewY(-0.1953125deg); }
+  88.8% { transform: skewX(0.09765625deg) skewY(0.09765625deg); }
+  100% { transform: skewX(0deg) skewY(0deg); }
+}
+
+/* Styles pour les éléments de heartbeat */
+.heartbeat-primary {
+  animation: heartbeat-primary 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat-primary {
+  0% { transform: scale(1); }
+  14% { transform: scale(1.1); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.1); }
+  70% { transform: scale(1); }
+}
+
+/* Styles pour les éléments de flash */
+.flash-primary {
+  animation: flash-primary 1s ease-in-out infinite;
+}
+
+@keyframes flash-primary {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
+
+/* Styles pour les éléments de rubber band */
+.rubber-band-primary {
+  animation: rubber-band-primary 1s ease-in-out;
+}
+
+@keyframes rubber-band-primary {
+  0% { transform: scale(1); }
+  30% { transform: scaleX(1.25) scaleY(0.75); }
+  40% { transform: scaleX(0.75) scaleY(1.25); }
+  50% { transform: scaleX(1.15) scaleY(0.85); }
+  65% { transform: scaleX(0.95) scaleY(1.05); }
+  75% { transform: scaleX(1.05) scaleY(0.95); }
+  100% { transform: scale(1); }
+}
+
+/* Styles pour les éléments de tada */
+.tada-primary {
+  animation: tada-primary 1s ease-in-out;
+}
+
+@keyframes tada-primary {
+  0% { transform: scale(1); }
+  10%, 20% { transform: scale(0.9) rotate(-3deg); }
+  30%, 50%, 70%, 90% { transform: scale(1.1) rotate(3deg); }
+  40%, 60%, 80% { transform: scale(1.1) rotate(-3deg); }
+  100% { transform: scale(1) rotate(0); }
+}

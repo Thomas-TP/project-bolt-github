@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HelpDesk GIT - Mode hors ligne</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .offline-container {
+            max-width: 500px;
+            padding: 2rem;
+        }
+        .offline-icon {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        .retry-button {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .retry-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+        .features {
+            margin-top: 3rem;
+            text-align: left;
+        }
+        .feature {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        .feature-icon {
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="offline-container">
+        <div class="offline-icon">📶</div>
+        <h1>Mode hors ligne</h1>
+        <p>
+            Vous êtes actuellement hors ligne. Certaines fonctionnalités de HelpDesk GIT 
+            sont disponibles même sans connexion Internet.
+        </p>
+        
+        <div class="features">
+            <div class="feature">
+                <span class="feature-icon">✓</span>
+                Consultation des tickets en cache
+            </div>
+            <div class="feature">
+                <span class="feature-icon">✓</span>
+                Création de brouillons de tickets
+            </div>
+            <div class="feature">
+                <span class="feature-icon">✓</span>
+                Base de connaissances locale
+            </div>
+            <div class="feature">
+                <span class="feature-icon">⏳</span>
+                Synchronisation automatique au retour en ligne
+            </div>
+        </div>
+        
+        <button class="retry-button" onclick="window.location.reload()">
+            Réessayer la connexion
+        </button>
+    </div>
+
+    <script>
+        // Auto-retry when back online
+        window.addEventListener('online', () => {
+            window.location.reload();
+        });
+    </script>
+</body>
+</html>

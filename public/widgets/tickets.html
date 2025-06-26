@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HelpDesk Tickets</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 16px;
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            font-size: 14px;
+        }
+        .widget-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .widget-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 8px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .widget-title {
+            font-weight: 600;
+            font-size: 16px;
+        }
+        .ticket-item {
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 8px;
+            margin-bottom: 8px;
+            border-left: 3px solid #fbbf24;
+        }
+        .ticket-title {
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+        .ticket-meta {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+        .status-high { border-left-color: #ef4444; }
+        .status-medium { border-left-color: #f59e0b; }
+        .status-low { border-left-color: #10b981; }
+    </style>
+</head>
+<body>
+    <div class="widget-header">
+        <div class="widget-icon">🎫</div>
+        <div class="widget-title">Tickets récents</div>
+    </div>
+    
+    <div id="tickets-list">
+        <div class="ticket-item status-high">
+            <div class="ticket-title">Problème réseau urgent</div>
+            <div class="ticket-meta">Il y a 15 min • Priorité haute</div>
+        </div>
+        
+        <div class="ticket-item status-medium">
+            <div class="ticket-title">Installation logiciel</div>
+            <div class="ticket-meta">Il y a 1h • En cours</div>
+        </div>
+        
+        <div class="ticket-item status-low">
+            <div class="ticket-title">Question formation</div>
+            <div class="ticket-meta">Il y a 2h • Résolu</div>
+        </div>
+    </div>
+
+    <script>
+        // Update widget data
+        async function updateTickets() {
+            try {
+                const response = await fetch('/api/tickets/recent');
+                const tickets = await response.json();
+                
+                const ticketsList = document.getElementById('tickets-list');
+                ticketsList.innerHTML = tickets.map(ticket => `
+                    <div class="ticket-item status-${ticket.priority}">
+                        <div class="ticket-title">${ticket.title}</div>
+                        <div class="ticket-meta">${ticket.created_at} • ${ticket.status}</div>
+                    </div>
+                `).join('');
+            } catch (error) {
+                console.error('Error updating widget:', error);
+            }
+        }
+
+        // Update every 5 minutes
+        setInterval(updateTickets, 5 * 60 * 1000);
+        
+        // Click handler to open main app
+        document.addEventListener('click', () => {
+            if (window.parent !== window) {
+                window.parent.postMessage({ action: 'openApp', path: '/tickets' }, '*');
+            } else {
+                window.open('/tickets', '_blank');
+            }
+        });
+    </script>
+</body>
+</html>
